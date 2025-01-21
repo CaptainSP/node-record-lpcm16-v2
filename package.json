@@ -1,15 +1,19 @@
 {
-  "name": "node-record-lpcm16",
-  "author": "Gilles De Mey",
-  "version": "1.0.1",
-  "description": "Record a microphone input stream",
+  "name": "node-record-lpcm16-v2",
+  "author": "CaptainSP",
+  "version": "1.0.0",
+  "description": "Record a microphone input stream. Supports Electron.",
   "license": "ISC",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "types/types.d.ts",
   "dependencies": {
     "debug": "^2.6.8"
   },
   "devDependencies": {
-    "standard": "^13.0.2"
+    "@types/debug": "^4.1.12",
+    "@types/node": "^22.10.7",
+    "standard": "^13.0.2",
+    "typescript": "^5.7.3"
   },
   "scripts": {
     "test": "standard"
