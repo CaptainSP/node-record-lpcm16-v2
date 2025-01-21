@@ -1,5 +1,5 @@
-import { Recorder } from '../../types/recorder';
-import { ArecordOptions } from './../../types/arecord-options.d';
+import { Recorder } from '../types/recorder';
+import { ArecordOptions } from '../types/arecord-options';
 
 
 const createArecordCommand = (options: ArecordOptions): Recorder => {

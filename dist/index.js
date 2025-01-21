@@ -97,6 +97,4 @@ Enable debugging with the environment variable DEBUG=record.`);
         return this._stream;
     }
 }
-module.exports = {
-    record: (...args) => new Recording(...args),
-};
+exports.default = Recording;

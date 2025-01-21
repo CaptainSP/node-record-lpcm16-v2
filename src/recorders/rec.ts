@@ -1,5 +1,5 @@
-import { Recorder } from "../../types/recorder";
-import { RecOptions } from "./../../types/rec-options.d";
+import { Recorder } from "../types/recorder";
+import { RecOptions } from "../types/rec-options";
 
 const createRecCommand = (
   options: RecOptions

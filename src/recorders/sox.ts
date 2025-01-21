@@ -1,5 +1,5 @@
-import { Recorder } from "../../types/recorder";
-import { SoxOptions } from "./../../types/sox-options.d";
+import { Recorder } from "../types/recorder";
+import { SoxOptions } from "../types/sox-options";
 
 const createSoxCommand = (options: SoxOptions): Recorder => {
   const cmd = "sox";

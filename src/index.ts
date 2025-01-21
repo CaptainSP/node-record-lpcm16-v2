@@ -1,5 +1,5 @@
-import { Recorder } from "./../types/recorder.d";
-import { RecorderOptions } from "./../types/recording-options.d";
+import { Recorder } from "./types/recorder";
+import { RecorderOptions } from "./types/recording-options";
 ("use strict");
 
 import assert from "assert";
@@ -132,6 +132,4 @@ Enable debugging with the environment variable DEBUG=record.`
   }
 }
 
-module.exports = {
-  record: (...args: any[]) => new Recording(...args),
-};
+export default Recording;

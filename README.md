@@ -46,13 +46,13 @@ audioType             : 'wav'  // audio type to record
 
 ## Usage
 
-```javascript
-const recorder = require('node-record-lpcm16')
-const fs = require('fs')
+```typescript
+import recorder from 'node-record-lpcm16-v2'
+import fs from 'fs'
 
 const file = fs.createWriteStream('test.wav', { encoding: 'binary' })
 
-recorder.record({
+new Recorder({
   sampleRate: 44100
 })
 .stream()
@@ -62,12 +62,14 @@ recorder.record({
 You can pause, resume and stop the recording manually.
 
 ```javascript
-const recorder = require('node-record-lpcm16')
-const fs = require('fs')
+import recorder from 'node-record-lpcm16-v2'
+import fs from 'fs'
 
 const file = fs.createWriteStream('test.wav', { encoding: 'binary' })
 
-const recording = recorder.record()
+const recording = new Recorder({
+  //... options
+})
 recording.stream().pipe(file)
 
 // Pause recording after one second
@@ -117,37 +119,29 @@ Debug logging is implemented with [visionmedia/debug](https://github.com/visionm
 
 `DEBUG=record node examples/file.js`
 
-## Example
+## Using with Electron (Avaible in v2)
 
-Here's how you can write your own Siri in just 10 lines of code.
+You can use `extraResources` with Electron to store sox or other recording libraries. Then add options cmd as the path of the installed recorder in Electron.
 
-```javascript
-const recorder = require('../')
-const request = require('request')
+### Example
 
-const witToken = process.env.WIT_TOKEN // get one from wit.ai!
+```typescript
+const appPath = app.getAppPath();
+const resourcesPath = process.resourcesPath;
 
-function parseResult (err, resp, body) {
-  if (err) console.error(err)
-  console.log(body)
+const soxPaths = {
+  win: path.join(resourcesPath, "extraResources", "sox/win32/sox.exe"),
+};
+
+let cmd = "sox";
+if (process.platform === "win32") {
+  cmd = soxPaths.win;
 }
 
-const recording = recorder.record({
-  recorder: 'arecord'
+const recording = new Recorder({
+  cmd: cmd
 })
 
-recording
-  .stream()
-  .pipe(request.post({
-    'url': 'https://api.wit.ai/speech?client=chromium&lang=en-us&output=json',
-    'headers': {
-      'Accept': 'application/vnd.wit.20160202+json',
-      'Authorization': `Bearer ${witToken}`,
-      'Content-Type': 'audio/wav'
-    }
-  }, parseResult))
+// you can add other platforms as well
 
-setTimeout(() => {
-  recording.stop()
-}, 3000) // Stop after three seconds of recording
 ```

@@ -1,11 +1,11 @@
 {
   "name": "node-record-lpcm16-v2",
   "author": "CaptainSP",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Record a microphone input stream. Supports Electron.",
   "license": "ISC",
   "main": "dist/index.js",
-  "types": "types/types.d.ts",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "debug": "^2.6.8"
   },
